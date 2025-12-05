@@ -56,6 +56,24 @@
             100%{background-position:0% 50%}
         }
 
+        /* Floating sprite animations (small & plentiful, flying back and forth) */
+        @keyframes drift-1 { 0%{left:-60px;opacity:0} 5%{opacity:0.12} 50%{left:calc(50vw - 24px);opacity:0.12} 95%{opacity:0.12} 100%{left:110vw;opacity:0} }
+        @keyframes drift-2 { 0%{left:110vw;opacity:0} 5%{opacity:0.1} 50%{left:calc(50vw - 20px);opacity:0.1} 95%{opacity:0.1} 100%{left:-70px;opacity:0} }
+        @keyframes drift-3 { 0%{left:-50px;opacity:0} 5%{opacity:0.14} 50%{left:calc(50vw - 22px);opacity:0.14} 95%{opacity:0.14} 100%{left:110vw;opacity:0} }
+        @keyframes bob-1 { 0%, 100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(-12px) rotate(4deg)} }
+        @keyframes bob-2 { 0%, 100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(-15px) rotate(-3deg)} }
+        @keyframes bob-3 { 0%, 100%{transform:translateY(0px) rotate(0deg)} 50%{transform:translateY(-10px) rotate(3deg)} }
+
+        /* Background sprites container */
+        .bg-sprites{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+        .sprite{position:absolute;image-rendering:pixelated;filter:drop-shadow(0 0 8px rgba(95,248,255,0.08))}
+        .sprite img{display:block;width:100%;height:100%;object-fit:contain}
+
+        /* Small sprite sizes - slow and smooth */
+        .sprite-1{width:48px;height:48px;animation:drift-1, bob-1;animation-duration:32s, 4.5s;animation-timing-function:cubic-bezier(0.25, 0.46, 0.45, 0.94), ease-in-out;animation-iteration-count:infinite, infinite}
+        .sprite-2{width:40px;height:40px;animation:drift-2, bob-2;animation-duration:36s, 5s;animation-timing-function:cubic-bezier(0.25, 0.46, 0.45, 0.94), ease-in-out;animation-iteration-count:infinite, infinite}
+        .sprite-3{width:44px;height:44px;animation:drift-3, bob-3;animation-duration:34s, 4.8s;animation-timing-function:cubic-bezier(0.25, 0.46, 0.45, 0.94), ease-in-out;animation-iteration-count:infinite, infinite}
+
         .wrap{
             width:100%;
             max-width:1100px;
@@ -509,6 +527,21 @@
 </head>
 <body>
     <div class="back-anim" aria-hidden="true"></div>
+    <div class="bg-sprites" aria-hidden="true">
+        <div class="sprite sprite-1" style="top:5%; animation-delay:0s, 0s"><img src="https://i.postimg.cc/Kc9ddzxV/Screenshot-2025-12-05-084222.png" alt=""></div>
+        <div class="sprite sprite-2" style="top:12%; animation-delay:-3s, -0.5s"><img src="https://i.postimg.cc/Gh8tbb9q/150px-Ender-Pearl-JE3-BE2.png" alt=""></div>
+        <div class="sprite sprite-3" style="top:18%; animation-delay:-6s, -1s"><img src="https://i.postimg.cc/Pq4rSxVR/Diammd-Sord.webp" alt=""></div>
+        <div class="sprite sprite-1" style="top:25%; animation-delay:-2s, -0.2s"><img src="https://i.postimg.cc/Kc9ddzxV/Screenshot-2025-12-05-084222.png" alt=""></div>
+        <div class="sprite sprite-2" style="top:32%; animation-delay:-5s, -0.8s"><img src="https://i.postimg.cc/Gh8tbb9q/150px-Ender-Pearl-JE3-BE2.png" alt=""></div>
+        <div class="sprite sprite-3" style="top:40%; animation-delay:-8s, -1.5s"><img src="https://i.postimg.cc/Pq4rSxVR/Diammd-Sord.webp" alt=""></div>
+        <div class="sprite sprite-1" style="top:48%; animation-delay:-1s, -0.3s"><img src="https://i.postimg.cc/Kc9ddzxV/Screenshot-2025-12-05-084222.png" alt=""></div>
+        <div class="sprite sprite-2" style="top:55%; animation-delay:-4s, -1.2s"><img src="https://i.postimg.cc/Gh8tbb9q/150px-Ender-Pearl-JE3-BE2.png" alt=""></div>
+        <div class="sprite sprite-3" style="top:62%; animation-delay:-7s, -0.9s"><img src="https://i.postimg.cc/Pq4rSxVR/Diammd-Sord.webp" alt=""></div>
+        <div class="sprite sprite-1" style="top:70%; animation-delay:-3.5s, -0.6s"><img src="https://i.postimg.cc/Kc9ddzxV/Screenshot-2025-12-05-084222.png" alt=""></div>
+        <div class="sprite sprite-2" style="top:77%; animation-delay:-6.5s, -1.8s"><img src="https://i.postimg.cc/Gh8tbb9q/150px-Ender-Pearl-JE3-BE2.png" alt=""></div>
+        <div class="sprite sprite-3" style="top:84%; animation-delay:-2.5s, -0.4s"><img src="https://i.postimg.cc/Pq4rSxVR/Diammd-Sord.webp" alt=""></div>
+        <div class="sprite sprite-1" style="top:91%; animation-delay:-9s, -1.1s"><img src="https://i.postimg.cc/Kc9ddzxV/Screenshot-2025-12-05-084222.png" alt=""></div>
+    </div>
     <div id="cursor-follower" aria-hidden="true"></div>
 
     <div class="wrap" role="main">
@@ -833,7 +866,5 @@
             }
         })();
     </script>
-
-    
 </body>
 </html>
